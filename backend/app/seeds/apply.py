@@ -4,8 +4,9 @@ from pydantic import PostgresDsn
 
 from app.seeds.seed_patients import seed_patients
 from app.seeds.seed_admissions import seed_admissions
+from app.seeds.seed_lab_items import seed_lab_items
 from app.infrastructures.db.database import Database
-from app.infrastructures.db.models.base import BaseModel
+from app.infrastructures.db.models.base import Base
 
 load_dotenv()
 
@@ -25,8 +26,9 @@ db_url = PostgresDsn.build(
 )
 
 db = Database(str(db_url))
-BaseModel.metadata.create_all(db.sync_engine)
+Base.metadata.create_all(db.sync_engine)
 
 with db.get_sync_session() as session:
     seed_patients(session)
     seed_admissions(session)
+    seed_lab_items(session)

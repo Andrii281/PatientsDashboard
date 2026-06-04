@@ -37,5 +37,5 @@ def seed_admissions(session: Session):
                 hospital_expire_flag=int(row["hospital_expire_flag"])
             ))
         
-        session.add_all(admissions)
-        session.commit()
+    session.add_all(admissions)
+    session.commit()
