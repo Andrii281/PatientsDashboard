@@ -1,12 +1,12 @@
-import type { IPatient } from "@/types/IPatient";
+import { type IPatient } from "@/types/IPatient";
 import { Stack } from "@mui/material";
 import { Patient } from "./patient";
 
-interface IPatientsList {
+interface IPatientsListProps {
   patients: IPatient[];
 }
 
-export const PatientsList = ({ patients }: IPatientsList) => {
+export const PatientsList = ({ patients }: IPatientsListProps) => {
   return (
     <Stack
       sx={{
@@ -25,6 +25,7 @@ export const PatientsList = ({ patients }: IPatientsList) => {
           gender={patient.gender}
           anchorAge={patient.anchor_age}
           anchorYear={patient.anchor_year}
+          admissions={patient.admissions}
         />
       ))}
     </Stack>

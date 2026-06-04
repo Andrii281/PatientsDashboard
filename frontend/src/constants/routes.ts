@@ -1,9 +1,10 @@
 export const ROUTES = {
   Root: "/",
 
-  Patiense: "/patients",
+  Patients: "/patients",
 
-  PatenseId: "/patiense/:id",
+  PatientsId: (id?: string | number): string =>
+    id ? `/patients/${id}` : "/patients/:id",
 
   NotFound: "/not-found",
 

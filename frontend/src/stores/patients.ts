@@ -20,7 +20,7 @@ export class PatientsStore {
     return this._status;
   }
 
-  async fetch() {
+  async fetch(): Promise<void> {
     this._status = EStoreState.Loading;
     const result = await patientsApi.getAll();
     this._status = EStoreState.Success;
