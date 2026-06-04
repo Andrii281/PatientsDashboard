@@ -24,6 +24,6 @@ export class PatientsStore {
     this._status = EStoreState.Loading;
     const result = await patientsApi.getAll();
     this._status = EStoreState.Success;
-    this._patients = result.response;
+    this._patients = result;
   }
 }

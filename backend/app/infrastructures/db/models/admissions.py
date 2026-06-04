@@ -1,23 +1,23 @@
-from app.infrastructures.db.models.base import BaseModel
+from app.infrastructures.db.models.base import Base
 from typing import Optional
 
-from datetime import date
+from datetime import datetime
 
 from sqlalchemy import Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-class AdmissionsModel(BaseModel):
+class AdmissionsModel(Base):
     __tablename__ = "admissions"
     
     hadm_id: Mapped[int] = mapped_column(Integer, primary_key=True)
     
     subject_id: Mapped[int] = mapped_column(Integer, ForeignKey("patients.subject_id"), nullable=False, index=True)
     
-    admittime: Mapped[date] = mapped_column(DateTime, nullable=False)
+    admittime: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     
-    dischtime: Mapped[date] = mapped_column(DateTime, nullable=False)
+    dischtime: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     
-    deathtime: Mapped[date] = mapped_column(DateTime, nullable=True)
+    deathtime: Mapped[datetime] = mapped_column(DateTime, nullable=True)
     
     admission_type: Mapped[str] = mapped_column(String(40), nullable=False)
     
@@ -35,9 +35,9 @@ class AdmissionsModel(BaseModel):
     
     race: Mapped[Optional[str]] = mapped_column(String(64), nullable=True)
     
-    edregtime: Mapped[Optional[date]] = mapped_column(DateTime, nullable=True)
+    edregtime: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
     
-    edouttime: Mapped[Optional[date]] = mapped_column(DateTime, nullable=True)
+    edouttime: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
     
     hospital_expire_flag: Mapped[int] = mapped_column(Integer, nullable=False)
     

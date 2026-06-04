@@ -1,9 +1,9 @@
-import { type IGetAllPatientsDto } from "../dtos/IGetAllPatientsDto";
+import { type IPatient } from "@/types/IPatient";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const patientsApi = {
-  getAll: async (): Promise<IGetAllPatientsDto> => {
+  getAll: async (): Promise<IPatient[]> => {
     const response = await fetch(`${BASE_URL}/patients`, {
       method: "GET",
       headers: {

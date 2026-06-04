@@ -1,8 +1,8 @@
 from typing import Final
 from fastapi import APIRouter
 
-from app.presentation.api.v1.health import router as health_router
-from app.presentation.api.v1.patients import router as patients_router
+from app.presentation.api.v1.controllers.health import router as health_router
+from app.presentation.api.v1.controllers.patients import router as patients_router
 
 router: Final = APIRouter()
 

@@ -61,11 +61,11 @@ export const Patient = ({
         >
           {admissions.map((admission) => (
             <Link
-              to={ROUTES.PatientsId(admission.hadm_id)}
-              key={admission.hadm_id}
+              to={ROUTES.PatientsId(admission.hadmId)}
+              key={admission.hadmId}
             >
               <Admission
-                admissionType={admission.admission_type}
+                admissionType={admission.admissionType}
                 admittime={admission.admittime}
               />
             </Link>

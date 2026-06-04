@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     patientsApi.getAll().then((data) => {
       console.log("data:", data);
-      setPatients(data.response);
+      setPatients(data);
     });
   }, []);
 

@@ -1,11 +1,11 @@
-from datetime import date
+from datetime import datetime
 from typing import Optional
-from app.infrastructures.db.models.base import BaseModel
+from app.infrastructures.db.models.base import Base
 
 from sqlalchemy import Date, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-class PatientsModel(BaseModel):
+class PatientsModel(Base):
     __tablename__ = "patients"
     
     subject_id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -22,7 +22,7 @@ class PatientsModel(BaseModel):
     
     anchor_year_group: Mapped[str] = mapped_column(String(32), nullable=False)
     
-    dod: Mapped[Optional[date]] = mapped_column(Date, nullable=True)
+    dod: Mapped[Optional[datetime]] = mapped_column(Date, nullable=True)
     
     admissions: Mapped[list["AdmissionsModel"]] = relationship(
         "AdmissionsModel",

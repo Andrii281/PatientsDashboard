@@ -18,13 +18,13 @@ export const PatientsList = ({ patients }: IPatientsListProps) => {
     >
       {patients.map((patient) => (
         <Patient
-          key={patient.subject_id}
-          id={patient.subject_id}
-          firstName={patient.first_name}
-          lastName={patient.last_name}
+          key={patient.subjectId}
+          id={patient.subjectId}
+          firstName={patient.firstName}
+          lastName={patient.lastName}
           gender={patient.gender}
-          anchorAge={patient.anchor_age}
-          anchorYear={patient.anchor_year}
+          anchorAge={patient.anchorAge}
+          anchorYear={patient.anchorYear}
           admissions={patient.admissions}
         />
       ))}

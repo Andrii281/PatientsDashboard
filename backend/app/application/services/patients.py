@@ -10,4 +10,6 @@ class PatientsService(IPatientsService):
         
     
     def get_all(self):
-        return self.patients_repository.get_all()
+        patients =  self.patients_repository.get_all()
+        
+        return patients

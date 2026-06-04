@@ -1,7 +1,7 @@
 export interface IAdmission {
-    hadm_id: number;
+    hadmId: number;
 
-    subject_id: number;
+    subjectId: number;
 
     admittime: string;
 
@@ -9,19 +9,19 @@ export interface IAdmission {
 
     deathtime: string | null;
 
-    admission_type: string;
+    admissionType: string;
 
-    admit_provider_id: string;
+    admitProviderId: string;
 
-    admission_location: string;
+    admissionLocation: string;
 
-    discharge_location: string | null;
+    dischargeLocation: string | null;
 
     insurance: string;
 
     language: string | null;
 
-    marital_status: string | null;
+    maritalStatus: string | null;
 
     race: string | null;
 
@@ -29,5 +29,5 @@ export interface IAdmission {
 
     edouttime: string | null;
 
-    hospital_expire_flag: number
+    hospitalExpireFlag: number
 }

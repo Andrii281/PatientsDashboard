@@ -1,19 +1,19 @@
 import { type IAdmission } from "./IAdmission";
 
 export interface IPatient {
-  subject_id: number;
+  subjectId: number;
 
-  first_name: string;
+  firstName: string;
 
-  last_name: string;
+  lastName: string;
 
   gender: "M" | "F";
 
-  anchor_age: number;
+  anchorAge: number;
 
-  anchor_year: number;
+  anchorYear: number;
 
-  anchor_year_group: string;
+  anchorYearGroup: string;
 
   dod: string | null;
 
