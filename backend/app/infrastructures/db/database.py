@@ -29,4 +29,4 @@ class Database:
             logger.error('Session rollback because of exception: %s', exception)
             session.rollback()
         finally:
-            session.close
+            session.close()
