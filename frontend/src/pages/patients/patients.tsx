@@ -1,7 +1,6 @@
 import { useStore } from "@/contexts/store/store";
 import { EStoreState } from "@/types/EStoreState";
 import { Stack } from "@mui/material";
-import { useEffect } from "react";
 import { observer } from "mobx-react";
 import { PatientsList } from "./components/patientsList";
 
@@ -11,10 +10,6 @@ export const PatientsPage = observer(() => {
   if (patientsStore.status !== EStoreState.Success) {
     patientsStore.fetch();
   }
-
-  useEffect(() => {
-    console.log("patientsStore.status:", patientsStore.status);
-  }, [patientsStore.status]);
 
   return (
     <>
