@@ -42,5 +42,11 @@ class AdmissionsModel(Base):
     hospital_expire_flag: Mapped[int] = mapped_column(Integer, nullable=False)
     
     patient: Mapped["PatientsModel"] = relationship(
+        "PatientsModel",
         back_populates="admissions"
+    )
+    
+    lab_events: Mapped[list["LabEventsModel"]] = relationship(
+        "LabEventsModel",
+        back_populates="admission"
     )

@@ -28,3 +28,8 @@ class PatientsModel(Base):
         "AdmissionsModel",
         back_populates="patient",
     )
+    
+    lab_events: Mapped[list["LabEventsModel"]] = relationship(
+        "LabEventsModel",
+        back_populates="patient",
+    )
