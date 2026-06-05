@@ -3,13 +3,13 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 from app.infrastructures.db.models.admissions import AdmissionsModel
 
-PATIENTS_PATH = "app/seeds/admissions.csv"
+ADMISSIONS_PATH = "app/seeds/admissions.csv"
 
 def seed_admissions(session: Session):
     existing_ids = set(session.scalars(select(AdmissionsModel.hadm_id)).all())
     admissions: list[AdmissionsModel] = []
     
-    with open(PATIENTS_PATH, newline="", encoding="utf-8") as file:
+    with open(ADMISSIONS_PATH, newline="", encoding="utf-8") as file:
         reader = csv.DictReader(file)
         
         for row in reader:
