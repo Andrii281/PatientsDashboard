@@ -8,7 +8,6 @@ from app.infrastructures.db.models.admissions import AdmissionsModel #fix
 from app.domain.interfaces.patients_repository import IPatientsRepository
 from app.infrastructures.db.mappers.patients_db_mapper import PatientsDBMapper
 
-
 class PatientsRepository(IPatientsRepository):
     def __init__(self, db: Database):
         self.db: Database  = db

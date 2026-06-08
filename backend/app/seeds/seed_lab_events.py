@@ -11,29 +11,23 @@ def seed_lab_events(session: Session):
         reader = csv.DictReader(file)
         
         for row in reader:
-            raw_hadm_id = row["hadm_id"].strip()
-            hamd_id = None if raw_hadm_id in ("", "NULL") else int(raw_hadm_id)
-
-            raw_storetime = row["storetime"].strip()
-            storetime = None if raw_storetime in ("", "NULL") else raw_storetime
-
             lab_events.append(LabEventsModel(
                 lab_event_id = row["labevent_id"],
                 subject_id = row["subject_id"],
-                hamd_id = hamd_id,
+                hamd_id = row["hadm_id"] or None,
                 specimen_id = row["specimen_id"],
                 item_id = row["itemid"],
-                order_provider_id = row["order_provider_id"],
+                order_provider_id = row["order_provider_id"] or None,
                 charttime = row["charttime"],
-                storetime = storetime,
-                value = row["value"],
-                valuenum = row["valuenum"],
-                valueuom = row["valueuom"],
-                ref_range_lower = row["ref_range_lower"],
-                ref_range_upper = row["ref_range_upper"],
-                flag = row["flag"],
-                priority = row["priority"],
-                comments = row["comments"],
+                storetime = row["storetime"] or None,
+                value = row["value"] or None,
+                valuenum = row["valuenum"] or None,
+                valueuom = row["valueuom"] or None,
+                ref_range_lower = row["ref_range_lower"] or None,
+                ref_range_upper = row["ref_range_upper"] or None,
+                flag = row["flag"] or None,
+                priority = row["priority"] or None,
+                comments = row["comments"] or None,
             ))
     
     session.add_all(lab_events)
