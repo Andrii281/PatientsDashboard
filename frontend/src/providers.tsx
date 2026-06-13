@@ -1,15 +1,16 @@
 import { StrictMode } from "react";
 import { RouterProvider } from "react-router-dom";
+import { Provider as ReduxProvider } from "react-redux";
 
-import { StoreProvider } from "@/contexts/store/provider";
 import { appRouter } from "@/router/appRouter";
+import { store } from "@/store/store";
 
 export const Providers = () => {
   return (
     <StrictMode>
-      <StoreProvider>
+      <ReduxProvider store={store}>
         <RouterProvider router={appRouter} />
-      </StoreProvider>
+      </ReduxProvider>
     </StrictMode>
   );
 };

@@ -9,11 +9,11 @@ export default defineConfig({
     alias: {
       "@/api": resolve(__dirname, "src", "api"),
       "@/constants": resolve(__dirname, "src", "constants"),
-      "@/contexts": resolve(__dirname, "src", "contexts"),
+      "@/hooks": resolve(__dirname, "src", "hooks"),
       "@/dtos": resolve(__dirname, "src", "dtos"),
       "@/pages": resolve(__dirname, "src", "pages"),
       "@/router": resolve(__dirname, "src", "router"),
-      "@/stores": resolve(__dirname, "src", "stores"),
+      "@/store": resolve(__dirname, "src", "store"),
       "@/types": resolve(__dirname, "src", "types"),
     },
   },

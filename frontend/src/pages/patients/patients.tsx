@@ -1,23 +1,28 @@
-import { useStore } from "@/contexts/store/store";
-import { EStoreState } from "@/types/EStoreState";
 import { Stack } from "@mui/material";
-import { observer } from "mobx-react";
+
+import { EStoreStatus } from "@/types/EStoreStatus";
+import { useAppSelector } from "@/hooks/useAppSelector";
+import { fetchPatients } from "@/store/patients/actions";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { PatientsList } from "./components/patientsList";
 
-export const PatientsPage = observer(() => {
-  const { patientsStore } = useStore();
+export const PatientsPage = () => {
+  const dispath = useAppDispatch();
 
-  if (patientsStore.status !== EStoreState.Success) {
-    patientsStore.fetch();
+  const patientsStatus = useAppSelector((state) => state.patients.status);
+  const patients = useAppSelector((state) => state.patients.patients);
+
+  if (patientsStatus === EStoreStatus.Idle) {
+    dispath(fetchPatients());
   }
 
   return (
     <>
-      {patientsStore.status === EStoreState.Success && (
+      {patientsStatus === EStoreStatus.Success && (
         <Stack sx={{ padding: "0.8rem 10rem 0 10rem" }}>
-          <PatientsList patients={patientsStore.patients} />
+          <PatientsList patients={patients} />
         </Stack>
       )}
     </>
   );
-});
+};

@@ -23,11 +23,11 @@
     "paths": {
       "@/api/*": ["./src/api/*"],
       "@/constants/*": ["./src/constants/*"],
-      "@/contexts/*": ["./src/contexts/*"],
+      "@/hooks/*": ["./src/hooks/*"],
       "@/dtos/*": ["./src/dtos/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/router/*": ["./src/router/*"],
-      "@/stores/*": ["./src/stores/*"],
+      "@/store/*": ["./src/store/*"],
       "@/types/*": ["./src/types/*"]
     }
   },

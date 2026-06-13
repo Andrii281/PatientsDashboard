@@ -1,4 +1,4 @@
-export enum EStoreState {
+export enum EStoreStatus {
   Idle = "idle",
 
   Loading = "loading",
