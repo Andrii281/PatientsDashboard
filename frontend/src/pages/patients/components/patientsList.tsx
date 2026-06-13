@@ -1,12 +1,12 @@
-import { type IPatient } from "@/types/IPatient";
+import { type TPatient } from "@/types/TPatient";
 import { Stack } from "@mui/material";
 import { Patient } from "./patient";
 
-interface IPatientsListProps {
-  patients: IPatient[];
-}
+type TPatientsListProps = {
+  patients: TPatient[];
+};
 
-export const PatientsList = ({ patients }: IPatientsListProps) => {
+export const PatientsList = ({ patients }: TPatientsListProps) => {
   return (
     <Stack
       sx={{

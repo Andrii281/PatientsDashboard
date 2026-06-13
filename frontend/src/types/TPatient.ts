@@ -1,6 +1,6 @@
-import { type IAdmission } from "./IAdmission";
+import { type TAdmission } from "./TAdmission";
 
-export interface IPatient {
+export type TPatient = {
   subjectId: number;
 
   firstName: string;
@@ -17,5 +17,5 @@ export interface IPatient {
 
   dod: string | null;
 
-  admissions: IAdmission[];
-}
+  admissions: TAdmission[];
+};

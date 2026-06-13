@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { patientsApi } from "@/api/patientsApi";
-import { type IPatient } from "@/types/IPatient";
+import { type TPatient } from "@/types/TPatient";
 import { UNEXPECTED_ERROR_MESSAGE } from "@/constants/unexpectedErrorMessage";
 
 export const fetchPatients = createAsyncThunk<
-  IPatient[],
+  TPatient[],
   void,
   { rejectValue: string }
 >("patients/fetchPatients", async (_, { rejectWithValue }) => {

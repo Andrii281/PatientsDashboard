@@ -1,11 +1,11 @@
-import { type IPatient } from "@/types/IPatient";
+import { type TPatient } from "@/types/TPatient";
 import { EStoreStatus } from "@/types/EStoreStatus";
 import { createSlice } from "@reduxjs/toolkit";
 
 import { fetchPatients } from "./actions";
 
 type TPatienceSliceState = {
-  patients: IPatient[];
+  patients: TPatient[];
   status: EStoreStatus;
 };
 

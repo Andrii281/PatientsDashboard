@@ -3,13 +3,25 @@ import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
 
 import { useFetchLabEventsByAdmissionIdQuery } from "@/store/labEvents/api";
+import { LabEventsTable } from "./components/labEventsTable";
 
 export const PatientPage = () => {
   const { id } = useParams();
 
-  const { data } = useFetchLabEventsByAdmissionIdQuery(id ?? skipToken);
+  const { data: labEvents, isSuccess } = useFetchLabEventsByAdmissionIdQuery(
+    id ?? skipToken
+  );
 
-  console.log("data:", data);
+  console.log("data:", labEvents);
 
-  return <Box>Patient {id}</Box>;
+  return (
+    <Box>
+      Patient {id}
+      {isSuccess && (
+        <Box>
+          <LabEventsTable labEvents={labEvents} />
+        </Box>
+      )}
+    </Box>
+  );
 };

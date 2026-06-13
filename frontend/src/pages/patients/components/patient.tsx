@@ -6,12 +6,12 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import { type IAdmission } from "@/types/IAdmission";
+import { type TAdmission } from "@/types/TAdmission";
 import { Link } from "react-router-dom";
 import { Admission } from "./admission";
 import { ROUTES } from "@/constants/routes";
 
-interface IPatientProps {
+type TPatientProps = {
   id: number;
 
   firstName: string;
@@ -24,15 +24,15 @@ interface IPatientProps {
 
   anchorYear: number;
 
-  admissions: IAdmission[];
-}
+  admissions: TAdmission[];
+};
 
 export const Patient = ({
   firstName,
   lastName,
   gender,
   admissions,
-}: IPatientProps) => {
+}: TPatientProps) => {
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ArrowDownwardIcon />}>
