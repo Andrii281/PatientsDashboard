@@ -33,3 +33,8 @@ class PatientsModel(Base):
         "LabEventsModel",
         back_populates="patient",
     )
+    
+    prescriptions: Mapped[list["PrescriptionsModel"]] = relationship(
+        "PrescriptionsModel",
+        back_populates="patient",
+    )

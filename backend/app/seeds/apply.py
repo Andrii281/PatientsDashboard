@@ -6,6 +6,7 @@ from app.seeds.seed_patients import seed_patients
 from app.seeds.seed_admissions import seed_admissions
 from app.seeds.seed_lab_items import seed_lab_items
 from app.seeds.seed_lab_events import seed_lab_events
+from app.seeds.seed_prescriptions import seed_prescriptions
 from app.infrastructures.db.database import Database
 from app.infrastructures.db.models.base import Base
 
@@ -35,3 +36,4 @@ with db.get_sync_session() as session:
     seed_admissions(session)
     seed_lab_items(session)
     seed_lab_events(session)
+    seed_prescriptions(session)
