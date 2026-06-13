@@ -14,7 +14,7 @@ def seed_lab_events(session: Session):
             lab_events.append(LabEventsModel(
                 lab_event_id = row["labevent_id"],
                 subject_id = row["subject_id"],
-                hamd_id = row["hadm_id"] or None,
+                hadm_id = row["hadm_id"] or None,
                 specimen_id = row["specimen_id"],
                 item_id = row["itemid"],
                 order_provider_id = row["order_provider_id"] or None,

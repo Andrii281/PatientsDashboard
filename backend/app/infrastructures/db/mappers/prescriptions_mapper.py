@@ -1,33 +1,38 @@
 from dataclasses import dataclass
 from typing import final
 
-from app.infrastructures.db.models.lab_events import LabEventsModel
-from app.domain.entities.lab_events import LabEventsEntity
+from app.infrastructures.db.models.prescriptions import PrescriptionsModel
+from app.domain.entities.prescriptions import PrescriptionsEntity
 from app.domain.entities.patients import PatientsEntity
 from app.domain.entities.admissions import AdmissionsEntity
-from app.domain.entities.lab_items import LabItemsEntity
 
 @final
 @dataclass(frozen=True, slots=True)
-class LabEventsDBMapper():
-    def to_entity(self, model: LabEventsModel):
-        return LabEventsEntity(
-            lab_event_id=model.lab_event_id,
+class PrescriptionsDBMapper():
+    def to_entity(self, model: PrescriptionsModel):
+        return PrescriptionsEntity(
+            prescription_id=model.prescription_id,
             subject_id=model.subject_id,
             hadm_id=model.hadm_id,
-            specimen_id=model.specimen_id,
-            item_id=model.item_id,
+            pharmacy_id=model.pharmacy_id,
+            poe_id=model.poe_id,
+            poe_seq=model.poe_seq,
             order_provider_id=model.order_provider_id,
-            charttime=model.charttime,
-            storetime=model.storetime,
-            value=model.value,
-            valuenum=model.valuenum,
-            valueuom=model.valueuom,
-            ref_range_lower=model.ref_range_lower,
-            ref_range_upper=model.ref_range_upper,
-            flag=model.flag,
-            priority=model.priority,
-            comments=model.comments,
+            starttime=model.starttime,
+            stoptime=model.stoptime,
+            drug_type=model.drug_type,
+            drug=model.drug,
+            formulary_drug_cd=model.formulary_drug_cd,
+            gsn=model.gsn,
+            ndc=model.ndc,
+            prod_strength=model.prod_strength,
+            form_rx=model.form_rx,
+            dose_val_rx=model.dose_val_rx,
+            dose_unit_rx=model.dose_unit_rx,
+            form_val_disp=model.form_val_disp,
+            form_unit_disp=model.form_unit_disp,
+            doses_per_24_hrs=model.doses_per_24_hrs,
+            route=model.route,
             patient=PatientsEntity(
                 subject_id=model.patient.subject_id,
                 first_name=model.patient.first_name,
@@ -36,7 +41,7 @@ class LabEventsDBMapper():
                 anchor_age=model.patient.anchor_age,
                 anchor_year=model.patient.anchor_year,
                 anchor_year_group=model.patient.anchor_year_group,
-                dod=model.patient.dod
+                dod=model.patient.dod,
             ),
             admission=AdmissionsEntity(
                 hadm_id=model.admission.hadm_id,
@@ -56,10 +61,4 @@ class LabEventsDBMapper():
                 edouttime=model.admission.edouttime,
                 hospital_expire_flag=model.admission.hospital_expire_flag,
             ),
-            lab_item=LabItemsEntity(
-                item_id=model.lab_item.item_id,
-                label=model.lab_item.label,
-                fluid=model.lab_item.fluid,
-                category=model.lab_item.category,
-            )
         )

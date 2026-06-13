@@ -10,7 +10,7 @@ from app.infrastructures.db.mappers.patients_db_mapper import PatientsDBMapper
 
 class PatientsRepository(IPatientsRepository):
     def __init__(self, db: Database):
-        self.db: Database  = db
+        self.db = db
         self.mapper = PatientsDBMapper()
         
     

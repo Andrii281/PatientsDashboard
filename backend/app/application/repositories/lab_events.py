@@ -1,7 +1,6 @@
 from app.domain.interfaces.lab_events_repository import ILabEventsRepository
 from app.infrastructures.db.database import Database
 from sqlalchemy import select
-from sqlalchemy.orm import selectinload
 
 from app.infrastructures.db.models.lab_events import LabEventsModel
 from app.infrastructures.db.models.lab_items import LabItemsModel #fix
@@ -17,10 +16,10 @@ class LabEventsRepository(ILabEventsRepository):
         with self.db.get_sync_session() as session:
             query = (
                 select(LabEventsModel)
-                .where(LabEventsModel.hamd_id == admission_id)
+                .where(LabEventsModel.hadm_id == admission_id)
             )
             
             result = session.execute(query)
-            lab_evcents = result.scalars().all()
+            lab_events = result.scalars().all()
             
-            return [self.mapper.to_entity(lab_event) for lab_event in lab_evcents]
+            return [self.mapper.to_entity(lab_event) for lab_event in lab_events]

@@ -11,7 +11,7 @@ class LabEventsEntity(BaseEntity):
     
     subject_id: int
     
-    hamd_id: Optional[int] = None
+    hadm_id: Optional[int] = None
     
     specimen_id: int
     

@@ -15,7 +15,7 @@ router: Final = APIRouter(prefix="/lab-events")
 def get_lab_event_by_id(
     admission_id: int = Query(alias="admissionId"),
     lab_events_service: ILabEventsService = Depends(Provide[Container.get_lab_events_service]),
-    mapper: LabEventsResponseMapper = Depends()
+    response_mapper: LabEventsResponseMapper = Depends()
 ):
     lab_events = lab_events_service.get_by_admission_id(admission_id)
-    return [mapper.to_response(lab_event) for lab_event in lab_events]
+    return response_mapper.to_response(lab_events)

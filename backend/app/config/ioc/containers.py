@@ -10,6 +10,9 @@ from app.application.services.patients import PatientsService
 from app.application.repositories.lab_events import LabEventsRepository
 from app.application.services.lab_events import LabEventsService
 
+from app.application.repositories.prescriptions import PrescriptionsRepository
+from app.application.services.prescriptions import PrescriptionsService
+
 from app.application.services.test import TestService
 
 class Container(DeclarativeContainer):
@@ -42,6 +45,16 @@ class Container(DeclarativeContainer):
     get_lab_events_service = providers.Factory(
         LabEventsService,
         get_lab_events_repository
+    )
+    
+    get_prescriptions_repository = providers.Factory(
+        PrescriptionsRepository,
+        db
+    )
+    
+    get_prescriptions_service = providers.Factory(
+        PrescriptionsService,
+        get_prescriptions_repository
     )
 
 container = Container()

@@ -12,7 +12,7 @@ class LabEventsModel(Base):
     
     subject_id: Mapped[int] = mapped_column(Integer, ForeignKey("patients.subject_id"), nullable=False, index=True)
     
-    hamd_id: Mapped[Optional[int]] = mapped_column(Integer, ForeignKey("admissions.hadm_id"), nullable=True, index=True)
+    hadm_id: Mapped[Optional[int]] = mapped_column(Integer, ForeignKey("admissions.hadm_id"), nullable=True, index=True)
     
     specimen_id: Mapped[int] = mapped_column(Integer, nullable=False)
     

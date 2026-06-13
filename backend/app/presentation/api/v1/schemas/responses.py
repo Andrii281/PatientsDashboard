@@ -94,3 +94,19 @@ class LabEventsResponseSchema(ResponseSchema):
     fluid: str
     
     category: str
+    
+    
+class PrescriptionsResponseSchema(ResponseSchema):
+    drug_type: str
+    
+    drug: str
+    
+    prod_strength: Optional[str] = None
+    
+    dose_val_rx: Optional[str] = None
+    
+    dose_unit_rx: Optional[str] = None
+    
+    doses_per_24_hrs: Optional[int] = None
+    
+    route: Optional[str] = None
