@@ -8,7 +8,7 @@ from app.presentation.api.v1.schemas.responses import AdmissionResponseSchema
 
 @final
 @dataclass(frozen=True, slots=True)
-class PatientsResponseMapper:
+class PatientsResponseMapper():
     def to_response(seld, patients: list[PatientsEntity]):
         return [ 
             PatientsResponseSchema(

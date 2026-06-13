@@ -8,6 +8,7 @@ from app.application.repositories.patients import PatientsRepository
 from app.application.services.patients import PatientsService
 
 from app.application.repositories.lab_events import LabEventsRepository
+from app.application.services.lab_events import LabEventsService
 
 from app.application.services.test import TestService
 
@@ -36,6 +37,11 @@ class Container(DeclarativeContainer):
     get_lab_events_repository = providers.Factory(
         LabEventsRepository,
         db
+    )
+    
+    get_lab_events_service = providers.Factory(
+        LabEventsService,
+        get_lab_events_repository
     )
 
 container = Container()

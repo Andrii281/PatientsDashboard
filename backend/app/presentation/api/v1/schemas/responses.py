@@ -61,6 +61,36 @@ class PatientsResponseSchema(ResponseSchema):
     
     anchor_year_group: str
     
-    dod: Optional[datetime]
+    dod: Optional[datetime] = None
     
     admissions: list[AdmissionResponseSchema]
+
+
+class LabEventsResponseSchema(ResponseSchema):
+    lab_event_id: int
+    
+    charttime: datetime
+    
+    storetime: Optional[datetime] = None
+    
+    value: Optional[str] = None
+    
+    valuenum: Optional[str] = None
+    
+    valueuom:  Optional[str] = None
+    
+    ref_range_lower: Optional[str] = None
+    
+    ref_range_upper: Optional[str] = None
+    
+    flag: Optional[str] = None
+    
+    priority: Optional[str] = None
+    
+    comments: Optional[str] = None
+    
+    label: str
+    
+    fluid: str
+    
+    category: str

@@ -4,11 +4,13 @@ from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
 from app.infrastructures.db.models.lab_events import LabEventsModel
-from app.infrastructures.db.models.lab_items import LabItemsModel
+from app.infrastructures.db.models.lab_items import LabItemsModel #fix
+from app.infrastructures.db.mappers.lab_events_mapper import LabEventsDBMapper
 
 class LabEventsRepository(ILabEventsRepository):
     def __init__(self, db: Database):
         self.db = db
+        self.mapper = LabEventsDBMapper()
         
     
     def get_by_admission_id(self, admission_id: int):
@@ -16,8 +18,9 @@ class LabEventsRepository(ILabEventsRepository):
             query = (
                 select(LabEventsModel)
                 .where(LabEventsModel.hamd_id == admission_id)
-                .options(selectinload())
             )
             
             result = session.execute(query)
-            return result.scalars().all()
+            lab_evcents = result.scalars().all()
+            
+            return [self.mapper.to_entity(lab_event) for lab_event in lab_evcents]
