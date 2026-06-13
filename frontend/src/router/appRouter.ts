@@ -5,7 +5,7 @@ import { rootRoute } from "./routes/root/root";
 import { patientsRoute } from "./routes/patients/patients";
 import { patientRoute } from "./routes/patient/patient";
 
-export const AppRouter = createBrowserRouter([
+export const appRouter = createBrowserRouter([
   rootRoute,
   patientsRoute,
   patientRoute,
