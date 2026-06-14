@@ -11,7 +11,7 @@ class ChatMessagesModel(Base):
     
     conversation_id: Mapped[uuid.UUID] = mapped_column(UUID, ForeignKey("chat-conversations.conversation_id"), nullable=False, index=True)
     
-    message: Mapped[str] = mapped_column(Text, nullable=False)
+    text: Mapped[str] = mapped_column(Text, nullable=False)
     
     author: Mapped[str] = mapped_column(String(4), nullable=False)
     

@@ -6,7 +6,7 @@ class ChatMessagesEntity(BaseEntity):
     
     conversation_id: UUID
     
-    message: str
+    text: str
     
     author: str
 
@@ -14,6 +14,6 @@ class ChatMessagesEntity(BaseEntity):
 class CreateChatMessageEntity(BaseEntity):
     conversation_id: UUID
     
-    message: str
+    text: str
     
     author: str

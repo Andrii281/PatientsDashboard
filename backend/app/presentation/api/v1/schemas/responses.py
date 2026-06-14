@@ -1,3 +1,4 @@
+from uuid import UUID
 from datetime import datetime
 from typing import Optional
 from pydantic.alias_generators import to_camel
@@ -44,7 +45,6 @@ class AdmissionResponseSchema(ResponseSchema):
 
     hospital_expire_flag: int
     
-
 
 class PatientsResponseSchema(ResponseSchema):
     subject_id: int
@@ -112,3 +112,17 @@ class PrescriptionsResponseSchema(ResponseSchema):
     doses_per_24_hrs: Optional[int] = None
     
     route: Optional[str] = None
+    
+    
+class ChatMessagesResponseSchema(ResponseSchema):
+    message_id: UUID
+    
+    text: str
+  
+    author: str
+    
+
+class ChatConversationsResponseSchema(ResponseSchema):
+    conversation_id: UUID
+    
+    messages: list[ChatMessagesResponseSchema]

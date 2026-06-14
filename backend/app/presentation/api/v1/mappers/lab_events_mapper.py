@@ -7,8 +7,8 @@ from app.presentation.api.v1.schemas.responses import LabEventsResponseSchema
 
 @final
 @dataclass(frozen=True, slots=True)
-class LabEventsResponseMapper():
-    def to_response(self, lab_events: list[LabEventsEntity]):
+class LabEventsMapper():
+    def get_lab_event_by_id_to_response(self, lab_events: list[LabEventsEntity]):
         return [LabEventsResponseSchema(
             labEventId=lab_event.lab_event_id,
             charttime=lab_event.charttime,

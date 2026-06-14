@@ -10,6 +10,7 @@ class PrescriptionsRepository(IPrescriptionsRepository):
         self.db = db
         self.mapper = PrescriptionsDBMapper()
     
+    
     def get_by_admission_id(self, admission_id: int):
         with self.db.get_sync_session() as session:
             query = (

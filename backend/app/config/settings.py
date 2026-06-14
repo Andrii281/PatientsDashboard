@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     db_database: str
     db_host: str = "localhost"
     
+    openai_api_key: str
+    openai_model: str
+    
     def get_db_url(self) -> str:
         return f"postgresql://{self.db_username}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_database}"
     

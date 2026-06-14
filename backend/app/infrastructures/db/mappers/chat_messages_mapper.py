@@ -10,7 +10,7 @@ class ChatMessagesDBMapper():
     def to_model(self, entity: CreateChatMessageEntity):
         return ChatMessagesModel(
             conversation_id=entity.conversation_id,
-            message=entity.message,
+            text=entity.text,
             author=entity.author
         )
         
@@ -18,6 +18,6 @@ class ChatMessagesDBMapper():
         return ChatMessagesEntity(
             message_id=model.message_id,
             conversation_id=model.conversation_id,
-            message=model.message,
+            text=model.text,
             author=model.author
         )

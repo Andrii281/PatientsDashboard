@@ -11,6 +11,7 @@ class ChatConversationsRepository(IChatConversationsRepository):
         self.db = db
         self.mapper = ChatConversationsDBMapper()
     
+    
     def get_by_admission_id(self, admission_id: int):
         with self.db.get_sync_session() as session:
             query = (

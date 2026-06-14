@@ -12,6 +12,6 @@ class DTOsSchema(BaseModel):
 class SendMesageDTO(DTOsSchema):
     conversationId: str
     
-    message: str
+    text: str
     
     author: str

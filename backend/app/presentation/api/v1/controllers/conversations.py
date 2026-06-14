@@ -7,7 +7,7 @@ from app.application.services.conversations import ConversationsService
 
 from app.presentation.api.v1.schemas.dtos import SendMesageDTO
 
-from app.presentation.api.v1.mappers.chat_messages_mapper import ChatMessagesRequestMapper
+from app.presentation.api.v1.mappers.conversations_mapper import ConversationsMapper
 
 router = APIRouter(prefix="/conversations")
 
@@ -15,10 +15,11 @@ router = APIRouter(prefix="/conversations")
 @inject
 def get_conversation(
     admission_id: int = Query(alias="admissionId"), 
-    conversation_service: ConversationsService = Depends(Provide[Container.get_conversations_service])
+    conversation_service: ConversationsService = Depends(Provide[Container.get_conversations_service]),
+    mapper: ConversationsMapper = Depends()
 ):
     conversation = conversation_service.get_conversation(admission_id)
-    return conversation
+    return mapper.get_conversation_to_response(conversation)
 
 
 @router.post("/message")
@@ -26,7 +27,9 @@ def get_conversation(
 def send_message(
     dto: SendMesageDTO,
     conversation_service: ConversationsService = Depends(Provide[Container.get_conversations_service]),
-    mapper: ChatMessagesRequestMapper = Depends()
+    mapper: ConversationsMapper = Depends()
 ):
-    message = mapper.to_entity(dto)
-    return conversation_service.create_message(message)
+    message = mapper.send_message_to_entity(dto)
+    answer = conversation_service.create_message(message)
+    
+    return mapper.send_message_to_response(answer)

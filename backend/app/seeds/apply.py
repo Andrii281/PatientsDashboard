@@ -31,7 +31,7 @@ db_url = PostgresDsn.build(
 )
 
 db = Database(str(db_url))
-print("apply")
+
 Base.metadata.drop_all(db.sync_engine)
 Base.metadata.create_all(db.sync_engine)
 

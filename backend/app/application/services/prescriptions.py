@@ -1,6 +1,9 @@
+from typing import final
+
 from app.domain.interfaces.prescriptions_service import IPrescriptionsService
 from app.domain.interfaces.prescriptions_repository import IPrescriptionsRepository
 
+@final
 class PrescriptionsService(IPrescriptionsService):
     def __init__(self, prescriptions_repository: IPrescriptionsRepository):
         self.prescriptions_repository = prescriptions_repository

@@ -6,8 +6,8 @@ from app.presentation.api.v1.schemas.responses import PrescriptionsResponseSchem
 
 @final
 @dataclass(frozen=True, slots=True)
-class PrescriptionsResponseMapper():
-    def to_response(self, prescriptions: list[PrescriptionsEntity]):
+class PrescriptionsMapper():
+    def get_prescriptions_by_id_to_response(self, prescriptions: list[PrescriptionsEntity]):
         return [
             PrescriptionsResponseSchema(
                 prescriptionId=prescription.prescription_id,
