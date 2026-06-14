@@ -97,6 +97,8 @@ class LabEventsResponseSchema(ResponseSchema):
     
     
 class PrescriptionsResponseSchema(ResponseSchema):
+    prescription_id: int
+    
     drug_type: str
     
     drug: str

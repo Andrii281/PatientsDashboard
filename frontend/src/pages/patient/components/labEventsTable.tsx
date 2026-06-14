@@ -1,5 +1,3 @@
-import { type TLabEvents } from "@/types/TLabEvents";
-
 import {
   Table,
   TableBody,
@@ -9,6 +7,8 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+
+import { type TLabEvents } from "@/types/TLabEvents";
 
 type TLabEventsTableProps = {
   labEvents: TLabEvents[];

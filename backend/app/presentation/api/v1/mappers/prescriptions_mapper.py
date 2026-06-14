@@ -10,6 +10,7 @@ class PrescriptionsResponseMapper():
     def to_response(self, prescriptions: list[PrescriptionsEntity]):
         return [
             PrescriptionsResponseSchema(
+                prescriptionId=prescription.prescription_id,
                 drugType=prescription.drug_type, 
                 drug=prescription.drug, 
                 prodStrength=prescription.prod_strength,
