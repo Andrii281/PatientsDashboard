@@ -13,6 +13,10 @@ from app.application.services.lab_events import LabEventsService
 from app.application.repositories.prescriptions import PrescriptionsRepository
 from app.application.services.prescriptions import PrescriptionsService
 
+from app.application.repositories.chat_conversations_repository import ChatConversationsRepository
+from app.application.repositories.chat_messages_repository import ChatMessagesRepository
+from app.application.services.conversations import ConversationsService
+
 from app.application.services.test import TestService
 
 class Container(DeclarativeContainer):
@@ -55,6 +59,22 @@ class Container(DeclarativeContainer):
     get_prescriptions_service = providers.Factory(
         PrescriptionsService,
         get_prescriptions_repository
+    )
+    
+    get_chat_conversations_repository = providers.Factory(
+        ChatConversationsRepository,
+        db
+    )
+    
+    get_chat_messages_repository = providers.Factory(
+        ChatMessagesRepository,
+        db
+    )
+    
+    get_conversations_service = providers.Factory(
+        ConversationsService,
+        get_chat_conversations_repository,
+        get_chat_messages_repository
     )
 
 container = Container()

@@ -10,6 +10,9 @@ from app.seeds.seed_prescriptions import seed_prescriptions
 from app.infrastructures.db.database import Database
 from app.infrastructures.db.models.base import Base
 
+from app.infrastructures.db.models.chat_conversations import ChatConversationsModel #fix
+from app.infrastructures.db.models.chat_messages import ChatMessagesModel #fix
+
 load_dotenv()
 
 db_username = os.getenv("DB_USERNAME")
@@ -28,6 +31,7 @@ db_url = PostgresDsn.build(
 )
 
 db = Database(str(db_url))
+print("apply")
 Base.metadata.drop_all(db.sync_engine)
 Base.metadata.create_all(db.sync_engine)
 

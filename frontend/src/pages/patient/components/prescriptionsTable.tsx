@@ -30,7 +30,7 @@ export const PrescriptionsTable = ({ prescriptions }: TPrescriptionsProps) => {
         </TableHead>
         <TableBody>
           {prescriptions.map((prescription) => (
-            <TableRow>
+            <TableRow key={prescription.prescriptionId}>
               <TableCell>{prescription.drug}</TableCell>
               <TableCell>{prescription.prodStrength}</TableCell>
               <TableCell>{prescription.doseValRx}</TableCell>
