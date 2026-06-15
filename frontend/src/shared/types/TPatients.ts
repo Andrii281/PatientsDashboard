@@ -1,6 +1,6 @@
-import { type TAdmission } from "./TAdmission";
+import { type TAdmissions } from "./TAdmissions";
 
-export type TPatient = {
+export type TPatients = {
   subjectId: number;
 
   firstName: string;
@@ -17,5 +17,5 @@ export type TPatient = {
 
   dod: string | null;
 
-  admissions: TAdmission[];
+  admissions: TAdmissions[];
 };

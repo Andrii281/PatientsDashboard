@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 
-import { Providers } from "./providers.tsx";
+import { Providers } from "./providers";
 
 import "./nullStyle.css";
 

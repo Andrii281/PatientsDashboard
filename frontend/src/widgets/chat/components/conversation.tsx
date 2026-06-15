@@ -35,14 +35,20 @@ export const Conversation = ({ messages }: TConversation) => {
         {messages.map((message) => {
           if (message.author == EMessageAuthor.User) {
             return (
-              <Box sx={{ alignSelf: "flex-start", maxWidth: "75%" }}>
+              <Box
+                key={message.messageId}
+                sx={{ alignSelf: "flex-start", maxWidth: "75%" }}
+              >
                 <UserMessage text={message.text} />
               </Box>
             );
           }
           if (message.author == EMessageAuthor.Bot) {
             return (
-              <Box sx={{ alignSelf: "flex-end", maxWidth: "75%" }}>
+              <Box
+                key={message.messageId}
+                sx={{ alignSelf: "flex-end", maxWidth: "75%" }}
+              >
                 <BotMessage text={message.text} />
               </Box>
             );

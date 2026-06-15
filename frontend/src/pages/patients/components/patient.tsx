@@ -6,7 +6,7 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import { type TAdmission } from "@/shared/types/TAdmission";
+import { type TAdmissions } from "@/shared/types/TAdmissions";
 import { Link } from "react-router-dom";
 import { Admission } from "./admission";
 import { ROUTES } from "@/constants/routes";
@@ -24,7 +24,7 @@ type TPatientProps = {
 
   anchorYear: number;
 
-  admissions: TAdmission[];
+  admissions: TAdmissions[];
 };
 
 export const Patient = ({

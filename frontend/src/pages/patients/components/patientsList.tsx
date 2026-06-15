@@ -1,9 +1,9 @@
-import { type TPatient } from "@/shared/types/TPatient";
+import { type TPatients } from "@/shared/types/TPatients";
 import { Stack } from "@mui/material";
 import { Patient } from "./patient";
 
 type TPatientsListProps = {
-  patients: TPatient[];
+  patients: TPatients[];
 };
 
 export const PatientsList = ({ patients }: TPatientsListProps) => {

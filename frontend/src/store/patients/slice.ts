@@ -1,11 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-import { type TPatient } from "@/shared/types/TPatient";
+import { type TPatients } from "@/shared/types/TPatients";
 import { EStoreStatus } from "@/shared/types/EStoreStatus";
 import { fetchPatients } from "./actions";
 
 type TPatienceSliceState = {
-  patients: TPatient[];
+  patients: TPatients[];
   status: EStoreStatus;
 };
 
@@ -24,7 +24,7 @@ const patientsSlice = createSlice({
     });
     builder.addCase(
       fetchPatients.fulfilled,
-      (state, action: PayloadAction<TPatient[]>) => {
+      (state, action: PayloadAction<TPatients[]>) => {
         state.status = EStoreStatus.Success;
         state.patients = action.payload;
       }
