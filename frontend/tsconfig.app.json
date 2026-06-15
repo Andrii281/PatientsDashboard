@@ -27,8 +27,9 @@
       "@/dtos/*": ["./src/dtos/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/router/*": ["./src/router/*"],
+      "@/shared/*": ["./src/shared/*"],
       "@/store/*": ["./src/store/*"],
-      "@/types/*": ["./src/types/*"]
+      "@/widgets/*": ["./src/widgets/*"]
     }
   },
   "include": ["src"]

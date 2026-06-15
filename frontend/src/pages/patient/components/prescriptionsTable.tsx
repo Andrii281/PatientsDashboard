@@ -8,7 +8,7 @@ import {
   Paper,
 } from "@mui/material";
 
-import { type TPrescriptions } from "@/types/TPrescriptions";
+import { type TPrescriptions } from "@/shared/types/TPrescriptions";
 
 type TPrescriptionsProps = {
   prescriptions: TPrescriptions[];

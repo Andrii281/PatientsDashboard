@@ -1,7 +1,7 @@
-import { type TPatient } from "@/types/TPatient";
-import { EStoreStatus } from "@/types/EStoreStatus";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
+import { type TPatient } from "@/shared/types/TPatient";
+import { EStoreStatus } from "@/shared/types/EStoreStatus";
 import { fetchPatients } from "./actions";
 
 type TPatienceSliceState = {
@@ -20,12 +20,15 @@ const patientsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchPatients.pending, (state) => {
-      state.status = EStoreStatus.Loading;
+      state.status = EStoreStatus.Pending;
     });
-    builder.addCase(fetchPatients.fulfilled, (state, action) => {
-      state.status = EStoreStatus.Success;
-      state.patients = action.payload;
-    });
+    builder.addCase(
+      fetchPatients.fulfilled,
+      (state, action: PayloadAction<TPatient[]>) => {
+        state.status = EStoreStatus.Success;
+        state.patients = action.payload;
+      }
+    );
     builder.addCase(fetchPatients.rejected, (state) => {
       state.status = EStoreStatus.Error;
     });

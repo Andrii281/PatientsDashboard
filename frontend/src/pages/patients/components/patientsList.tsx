@@ -1,4 +1,4 @@
-import { type TPatient } from "@/types/TPatient";
+import { type TPatient } from "@/shared/types/TPatient";
 import { Stack } from "@mui/material";
 import { Patient } from "./patient";
 

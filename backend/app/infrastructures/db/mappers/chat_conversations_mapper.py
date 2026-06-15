@@ -16,7 +16,7 @@ class ChatConversationsDBMapper():
                 ChatMessagesEntity(
                     message_id=message.message_id,
                     conversation_id=message.conversation_id,
-                    message=message.message,
+                    text=message.text,
                     author=message.author,
                 ) for message in model.messages
             ]

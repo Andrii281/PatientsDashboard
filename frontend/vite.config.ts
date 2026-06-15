@@ -13,8 +13,9 @@ export default defineConfig({
       "@/dtos": resolve(__dirname, "src", "dtos"),
       "@/pages": resolve(__dirname, "src", "pages"),
       "@/router": resolve(__dirname, "src", "router"),
+      "@/shared": resolve(__dirname, "src", "shared"),
       "@/store": resolve(__dirname, "src", "store"),
-      "@/types": resolve(__dirname, "src", "types"),
+      "@/widgets": resolve(__dirname, "src", "widgets"),
     },
   },
 });

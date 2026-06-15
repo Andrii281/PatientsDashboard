@@ -1,4 +1,4 @@
-import { type TPatient } from "@/types/TPatient";
+import { type TPatient } from "@/shared/types/TPatient";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 

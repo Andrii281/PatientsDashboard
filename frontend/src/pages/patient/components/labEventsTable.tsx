@@ -8,7 +8,7 @@ import {
   Paper,
 } from "@mui/material";
 
-import { type TLabEvents } from "@/types/TLabEvents";
+import { type TLabEvents } from "@/shared/types/TLabEvents";
 
 type TLabEventsTableProps = {
   labEvents: TLabEvents[];

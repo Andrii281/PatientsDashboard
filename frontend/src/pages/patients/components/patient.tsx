@@ -6,7 +6,7 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import { type TAdmission } from "@/types/TAdmission";
+import { type TAdmission } from "@/shared/types/TAdmission";
 import { Link } from "react-router-dom";
 import { Admission } from "./admission";
 import { ROUTES } from "@/constants/routes";

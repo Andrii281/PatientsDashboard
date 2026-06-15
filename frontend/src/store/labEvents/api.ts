@@ -1,4 +1,4 @@
-import { type TLabEvents } from "@/types/TLabEvents";
+import { type TLabEvents } from "@/shared/types/TLabEvents";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BASE_URL = import.meta.env.VITE_API_URL;

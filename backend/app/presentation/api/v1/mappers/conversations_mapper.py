@@ -1,7 +1,7 @@
 from app.presentation.api.v1.schemas.dtos import SendMesageDTO
 from app.domain.entities.chat_messages import ChatMessagesEntity, CreateChatMessageEntity
 from app.domain.entities.chat_conversations import ChatConversationsEntity
-from app.presentation.api.v1.schemas.responses import ChatMessagesResponseSchema, ChatConversationsResponseSchema
+from app.presentation.api.v1.schemas.responses import ChatMessagesResponseSchema, ChatConversationsResponseSchema, SendMessageResponseSchema
 
 
 class ConversationsMapper():
@@ -11,7 +11,7 @@ class ConversationsMapper():
             messages = [
                 ChatMessagesResponseSchema(
                     messageId=message.message_id,
-                    message=message.message,
+                    text=message.text,
                     author=message.author
                 ) 
                 for message in conversation.messages
@@ -20,10 +20,13 @@ class ConversationsMapper():
         
     
     def send_message_to_response(self, message: ChatMessagesEntity):
-        return ChatMessagesResponseSchema(
-            messageId=message.message_id,
-            text=message.text,
-            author=message.author
+        return SendMessageResponseSchema(
+            conversationId=message.conversation_id,
+            message=ChatMessagesResponseSchema(
+                messageId=message.message_id,
+                text=message.text,
+                author=message.author
+            )
         )
         
         

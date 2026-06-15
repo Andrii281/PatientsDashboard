@@ -126,3 +126,9 @@ class ChatConversationsResponseSchema(ResponseSchema):
     conversation_id: UUID
     
     messages: list[ChatMessagesResponseSchema]
+    
+
+class SendMessageResponseSchema(ResponseSchema):
+    conversation_id: UUID
+    
+    message: ChatMessagesResponseSchema

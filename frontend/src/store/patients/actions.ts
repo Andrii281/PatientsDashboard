@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { patientsApi } from "@/api/patientsApi";
-import { type TPatient } from "@/types/TPatient";
+import { type TPatient } from "@/shared/types/TPatient";
 import { UNEXPECTED_ERROR_MESSAGE } from "@/constants/unexpectedErrorMessage";
 
 export const fetchPatients = createAsyncThunk<

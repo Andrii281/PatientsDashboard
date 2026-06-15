@@ -3,10 +3,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { patientsReducer } from "./patients/slice";
 import { labEventsApi } from "./labEvents/api";
 import { prescriptionsApi } from "./prescriptions/api";
+import { conversationsReducer } from "./conversations/slice";
 
 export const store = configureStore({
   reducer: {
     patients: patientsReducer,
+    conversations: conversationsReducer,
     [labEventsApi.reducerPath]: labEventsApi.reducer,
     [prescriptionsApi.reducerPath]: prescriptionsApi.reducer,
   },
