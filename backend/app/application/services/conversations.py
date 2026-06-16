@@ -6,6 +6,7 @@ from app.domain.interfaces.chat_messages_repository import IChatMessagesReposito
 from app.domain.entities.chat_messages import CreateChatMessageEntity
 from app.domain.interfaces.ai_agent_service import IAiAgentService
 from app.domain.dtos.send_mesage_request import SendMesageRequestDTO
+from app.shared.prompts.load_prompts import load_diagnostic_assessment_prompt
 
 @final
 class ConversationsService(IConversationsService):
@@ -34,7 +35,14 @@ class ConversationsService(IConversationsService):
             )
         )
         
-        bot_message = self.ai_agent_service.get_response(message.text)
+        prompt = load_diagnostic_assessment_prompt(
+            message.text, 
+            message.metadata.profile, 
+            message.metadata.lab_events, 
+            message.metadata.prescriptions
+        )
+        
+        bot_message = self.ai_agent_service.get_response(prompt)
         
         return self.chat_messages_repository.create_bot_message(
             conversation_id=message.conversation_id,
