@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.domain.entities.chat_messages import ChatMessagesEntity
+from app.domain.dtos.send_mesage_request import SendMesageRequestDTO
 
 class IConversationsService(ABC):
     @abstractmethod
@@ -8,5 +8,5 @@ class IConversationsService(ABC):
         pass
     
     @abstractmethod
-    def create_message(self, message: ChatMessagesEntity):
+    def create_message(self, message: SendMesageRequestDTO):
         pass

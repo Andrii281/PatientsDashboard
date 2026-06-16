@@ -18,18 +18,12 @@ from app.application.repositories.chat_messages_repository import ChatMessagesRe
 from app.application.services.openai_agent import openAiService
 from app.application.services.conversations import ConversationsService
 
-from app.application.services.test import TestService
-
 class Container(DeclarativeContainer):
     settings = providers.Singleton(Settings)
 
     db = providers.Singleton(
         Database,
         settings.provided.get_db_url.call()
-    )
-    
-    get_test_service = providers.Singleton(
-        TestService
     )
     
     get_patients_repository = providers.Factory(

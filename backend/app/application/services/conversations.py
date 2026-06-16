@@ -5,6 +5,7 @@ from app.domain.interfaces.chat_conversations_repository import IChatConversatio
 from app.domain.interfaces.chat_messages_repository import IChatMessagesRepository
 from app.domain.entities.chat_messages import CreateChatMessageEntity
 from app.domain.interfaces.ai_agent_service import IAiAgentService
+from app.domain.dtos.send_mesage_request import SendMesageRequestDTO
 
 @final
 class ConversationsService(IConversationsService):
@@ -24,8 +25,14 @@ class ConversationsService(IConversationsService):
         return chat_conversations
     
     
-    def create_message(self, message: CreateChatMessageEntity):
-        self.chat_messages_repository.create(message)
+    def create_message(self, message: SendMesageRequestDTO):
+        self.chat_messages_repository.create(
+            CreateChatMessageEntity(
+                conversation_id=message.conversation_id,
+                text=message.text,
+                author=message.author
+            )
+        )
         
         bot_message = self.ai_agent_service.get_response(message.text)
         

@@ -5,7 +5,7 @@ from dependency_injector.wiring import inject, Provide
 from app.config.ioc.containers import Container
 from app.application.services.conversations import ConversationsService
 
-from app.presentation.api.v1.schemas.dtos import SendMesageDTO
+from app.domain.dtos.send_mesage_request import SendMesageRequestDTO
 
 from app.presentation.api.v1.mappers.conversations_mapper import ConversationsMapper
 
@@ -25,11 +25,10 @@ def get_conversation(
 @router.post("/message")
 @inject
 def send_message(
-    dto: SendMesageDTO,
+    dto: SendMesageRequestDTO,
     conversation_service: ConversationsService = Depends(Provide[Container.get_conversations_service]),
     mapper: ConversationsMapper = Depends()
 ):
-    message = mapper.send_message_to_entity(dto)
-    answer = conversation_service.create_message(message)
+    answer = conversation_service.create_message(dto)
     
     return mapper.send_message_to_response(answer)
