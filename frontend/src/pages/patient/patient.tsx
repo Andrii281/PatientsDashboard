@@ -16,6 +16,8 @@ import { fetchPatients } from "@/store/patients/actions";
 import { Profile } from "./components/profile";
 import { type TAdmissions } from "@/shared/types/TAdmissions";
 import { ROUTES } from "@/constants/routes";
+import { sendMessage } from "@/store/conversations/actions";
+import { EMessageAuthor } from "@/shared/types/EMessageAuthor";
 
 export const PatientPage = () => {
   const dispatch = useAppDispatch();
@@ -57,6 +59,60 @@ export const PatientPage = () => {
 
   const handleGoBack = () => {
     navigate(ROUTES.Patients);
+  };
+
+  const handleSendMessage = (
+    conversationId: string,
+    text: string,
+    author: EMessageAuthor
+  ) => {
+    dispatch(
+      sendMessage({
+        conversationId: conversationId,
+        text: text,
+        author: author,
+        metadata: {
+          ...(patient
+            ? {
+                profile: {
+                  subjectId: patient.subjectId,
+                  firstName: patient.firstName,
+                  lastName: patient.lastName,
+                  gender: patient.gender,
+                  age: patient.anchorAge,
+                  language: patient.admissions[0].language,
+                  maritalStatus: patient.admissions[0].maritalStatus,
+                  race: patient.admissions[0].race,
+                },
+              }
+            : {}),
+          ...(labEvents
+            ? {
+                labEvents: labEvents.map((labEvent) => ({
+                  label: labEvent.label,
+                  value: labEvent.value,
+                  valueuom: labEvent.valueuom,
+                  range: `${labEvent.refRangeLower}-${labEvent.refRangeUpper}`,
+                  fluid: labEvent.fluid,
+                  category: labEvent.category,
+                })),
+              }
+            : {}),
+          ...(prescriptions
+            ? {
+                prescriptions: prescriptions.map((prescription) => ({
+                  drug: prescription.drug,
+                  prodStrength: prescription.prodStrength,
+                  doseValRx: prescription.doseValRx,
+                  doseUnitRx: prescription.doseUnitRx,
+                  dosesPer24Hrs: String(prescription.dosesPer24Hrs),
+                  route: prescription.route,
+                })),
+              }
+            : {}),
+        },
+      })
+    );
   };
 
   return (
@@ -117,7 +173,7 @@ export const PatientPage = () => {
             </Box>
           </Grid>
           <Grid size={4} sx={{ height: "100%" }}>
-            {id && <Chat admissionId={id} />}
+            {id && <Chat admissionId={id} onSendMessage={handleSendMessage} />}
           </Grid>
         </Grid>
       </Box>

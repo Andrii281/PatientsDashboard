@@ -1,4 +1,5 @@
-import { type EMessageAuthor } from "@/shared/types/EMessageAuthor";
+import { type EMessageAuthor } from "../types/EMessageAuthor";
+import { type TSendMessageMetadataDTO } from "./TSendMessageMetadataDTO";
 
 export type TSendMessageRequestDTO = {
   conversationId: string;
@@ -6,4 +7,6 @@ export type TSendMessageRequestDTO = {
   text: string;
 
   author: EMessageAuthor;
+
+  metadata: TSendMessageMetadataDTO;
 };

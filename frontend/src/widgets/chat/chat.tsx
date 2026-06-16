@@ -5,16 +5,21 @@ import { MessageInput } from "./components/messageInput";
 import { Conversation } from "./components/conversation";
 import { EMessageAuthor } from "@/shared/types/EMessageAuthor";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { fetchConversation, sendMessage } from "@/store/conversations/actions";
+import { fetchConversation } from "@/store/conversations/actions";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { EStoreStatus } from "@/shared/types/EStoreStatus";
 import { createUserMessage } from "@/store/conversations/slice";
 
 type TConversationProps = {
   admissionId: string;
+  onSendMessage: (
+    conversationId: string,
+    text: string,
+    author: EMessageAuthor
+  ) => void;
 };
 
-export const Chat = ({ admissionId }: TConversationProps) => {
+export const Chat = ({ admissionId, onSendMessage }: TConversationProps) => {
   const dispath = useAppDispatch();
 
   const conversation = useAppSelector(
@@ -28,16 +33,10 @@ export const Chat = ({ admissionId }: TConversationProps) => {
     dispath(fetchConversation(admissionId));
   }, []);
 
-  const onSendMessage = (text: string) => {
+  const handleSendMessage = (text: string) => {
     if (conversation === null) return;
     dispath(createUserMessage(text));
-    dispath(
-      sendMessage({
-        conversationId: conversation.conversationId,
-        text: text,
-        author: EMessageAuthor.User,
-      })
-    );
+    onSendMessage(conversation.conversationId, text, EMessageAuthor.User);
   };
 
   return (
@@ -54,7 +53,7 @@ export const Chat = ({ admissionId }: TConversationProps) => {
           </Box>
           <Box sx={{ flexShrink: 0 }}>
             <MessageInput
-              onSendMessage={onSendMessage}
+              onSendMessage={handleSendMessage}
               disabled={sendingMessageStatus === EStoreStatus.Pending}
             />
           </Box>
