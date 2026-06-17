@@ -1,9 +1,9 @@
-import { type TPatient } from "@/shared/types/TPatients";
+import { type TPatients } from "@/shared/types/TPatients";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const patientsApi = {
-  getAll: async (): Promise<TPatient[]> => {
+  getAll: async (): Promise<TPatients[]> => {
     const response = await fetch(`${BASE_URL}/patients`, {
       method: "GET",
       headers: {
