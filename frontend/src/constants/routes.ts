@@ -1,7 +1,7 @@
 export const ROUTES = {
   Root: "/",
 
-  Patients: "/patients",
+  Patients: "/patients/hospitalizations",
 
   PatientsId: (id?: string | number): string =>
     id ? `/patients/${id}` : "/patients/:id",
