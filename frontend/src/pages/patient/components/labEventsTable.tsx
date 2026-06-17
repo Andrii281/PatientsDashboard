@@ -20,25 +20,64 @@ export const LabEventsTable = ({ labEvents }: TLabEventsTableProps) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>label</TableCell>
-            <TableCell>value</TableCell>
-            <TableCell>valueuom</TableCell>
-            <TableCell>range</TableCell>
-            <TableCell>fluid</TableCell>
-            <TableCell>category</TableCell>
+            <TableCell
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              Label
+            </TableCell>
+            <TableCell
+              align="center"
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              Value
+            </TableCell>
+            <TableCell
+              align="center"
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              Valueuom
+            </TableCell>
+            <TableCell
+              align="center"
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              Range
+            </TableCell>
+            <TableCell
+              align="center"
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              Fluid
+            </TableCell>
+            <TableCell
+              align="center"
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              Category
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {labEvents.map((labEvent) => (
             <TableRow key={labEvent.labEventId}>
-              <TableCell>{labEvent.label}</TableCell>
-              <TableCell>{labEvent.value}</TableCell>
-              <TableCell>{labEvent.valueuom}</TableCell>
-              <TableCell>
+              <TableCell sx={{ fontSize: "0.9rem" }}>
+                {labEvent.label}
+              </TableCell>
+              <TableCell align="center" sx={{ fontSize: "0.9rem" }}>
+                {labEvent.value}
+              </TableCell>
+              <TableCell align="center" sx={{ fontSize: "0.9rem" }}>
+                {labEvent.valueuom}
+              </TableCell>
+              <TableCell align="center" sx={{ fontSize: "0.9rem" }}>
                 {labEvent.refRangeLower}-{labEvent.refRangeUpper}
               </TableCell>
-              <TableCell>{labEvent.fluid}</TableCell>
-              <TableCell>{labEvent.category}</TableCell>
+              <TableCell align="center" sx={{ fontSize: "0.9rem" }}>
+                {labEvent.fluid}
+              </TableCell>
+              <TableCell align="center" sx={{ fontSize: "0.9rem" }}>
+                {labEvent.category}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

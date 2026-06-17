@@ -24,15 +24,15 @@ export const Profile = ({
   race,
 }: TProfileProps) => {
   return (
-    <Stack spacing={2.5} sx={{ padding: "1rem 0 0 1.4rem" }}>
-      <ProfileDetails label="subjectId" value={subjectId} />
-      <ProfileDetails label="firstName" value={firstName} />
-      <ProfileDetails label="lastName" value={lastName} />
-      <ProfileDetails label="gender" value={gender} />
-      <ProfileDetails label="age" value={age} />
-      <ProfileDetails label="race" value={race} />
-      <ProfileDetails label="language" value={language} />
-      <ProfileDetails label="maritalStatus" value={maritalStatus} />
+    <Stack spacing={2.5} sx={{ padding: "1rem 0 0 1.5rem" }}>
+      <ProfileDetails label="Subject Id" value={subjectId} />
+      <ProfileDetails label="First Name" value={firstName} />
+      <ProfileDetails label="Last Name" value={lastName} />
+      <ProfileDetails label="Gender" value={gender} />
+      <ProfileDetails label="Age" value={age} />
+      <ProfileDetails label="Eace" value={race} />
+      <ProfileDetails label="Language" value={language} />
+      <ProfileDetails label="Marital Status" value={maritalStatus} />
     </Stack>
   );
 };

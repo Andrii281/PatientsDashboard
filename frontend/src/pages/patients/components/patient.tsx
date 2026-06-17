@@ -1,5 +1,4 @@
 import {
-  Box,
   Stack,
   Accordion,
   AccordionSummary,
@@ -10,6 +9,7 @@ import { type TAdmissions } from "@/shared/types/TAdmissions";
 import { Link } from "react-router-dom";
 import { Admission } from "./admission";
 import { ROUTES } from "@/constants/routes";
+import { InfoField } from "./infoField";
 
 type TPatientProps = {
   id: number;
@@ -30,6 +30,7 @@ type TPatientProps = {
 export const Patient = ({
   firstName,
   lastName,
+  anchorAge,
   gender,
   admissions,
 }: TPatientProps) => {
@@ -38,17 +39,16 @@ export const Patient = ({
       <AccordionSummary expandIcon={<ArrowDownwardIcon />}>
         <Stack
           direction="row"
-          spacing={4}
+          spacing={8}
           sx={{
-            border: "0.1rem solid red",
             borderRadius: 4,
             padding: "0.2rem 1rem 0.2rem 1rem",
           }}
         >
-          <Box>
-            Name: {firstName} {lastName}
-          </Box>
-          <Box>gender: {gender}</Box>
+          <InfoField label="name" value={`${firstName} ${lastName}`} />
+          <InfoField label="age" value={anchorAge} />
+          <InfoField label="gender" value={gender} />
+          <InfoField label="hospitalizations" value={admissions.length} />
         </Stack>
       </AccordionSummary>
       <AccordionDetails>

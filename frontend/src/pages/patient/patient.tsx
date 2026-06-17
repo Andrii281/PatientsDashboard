@@ -144,14 +144,33 @@ export const PatientPage = () => {
       <Box
         sx={{ height: "calc(100vh - 2rem)", width: "100%", overflow: "hidden" }}
       >
-        <Grid container spacing={2} sx={{ width: "100%", height: "100%" }}>
+        <Grid container sx={{ width: "100%", height: "100%" }}>
           <Grid size={8} sx={{ height: "100%" }}>
             <Tabs value={tab} onChange={(_, value) => setTab(value)}>
               <Tab label="Profile" />
               <Tab label="lab events" />
               <Tab label="Prescriptions" />
             </Tabs>
-            <Box sx={{ width: "100%", height: "100%", overflowY: "auto" }}>
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                overflowY: "auto",
+                "&::-webkit-scrollbar": {
+                  width: "0.45rem",
+                },
+                "&::-webkit-scrollbar-track": {
+                  background: "transparent",
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  backgroundColor: "#888",
+                  borderRadius: "1rem",
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  backgroundColor: "#555",
+                },
+              }}
+            >
               {tab === 0 && patient && (
                 <Profile
                   subjectId={patient.subjectId}

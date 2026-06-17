@@ -7,10 +7,10 @@ import { store } from "@/store/store";
 
 export const Providers = () => {
   return (
-    <React.StrictMode>
-      <ReduxProvider store={store}>
-        <RouterProvider router={appRouter} />
-      </ReduxProvider>
-    </React.StrictMode>
+    // <React.StrictMode>
+    <ReduxProvider store={store}>
+      <RouterProvider router={appRouter} />
+    </ReduxProvider>
+    // </React.StrictMode>
   );
 };

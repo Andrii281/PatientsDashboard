@@ -35,6 +35,7 @@ export const Chat = ({ admissionId, onSendMessage }: TConversationProps) => {
 
   const handleSendMessage = (text: string) => {
     if (conversation === null) return;
+    if (text.length === 0) return;
     dispath(createUserMessage(text));
     onSendMessage(conversation.conversationId, text, EMessageAuthor.User);
   };
@@ -45,7 +46,6 @@ export const Chat = ({ admissionId, onSendMessage }: TConversationProps) => {
         <Stack
           sx={{
             height: "100%",
-            padding: "0.2rem 0.6rem 0.2rem 0.6rem",
           }}
         >
           <Box sx={{ flex: 1, minHeight: 0, height: "100%" }}>
@@ -54,7 +54,7 @@ export const Chat = ({ admissionId, onSendMessage }: TConversationProps) => {
           <Box sx={{ flexShrink: 0 }}>
             <MessageInput
               onSendMessage={handleSendMessage}
-              disabled={sendingMessageStatus === EStoreStatus.Pending}
+              loading={sendingMessageStatus === EStoreStatus.Pending}
             />
           </Box>
         </Stack>

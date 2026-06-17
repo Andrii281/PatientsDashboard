@@ -20,23 +20,50 @@ export const PrescriptionsTable = ({ prescriptions }: TPrescriptionsProps) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>drug</TableCell>
-            <TableCell>prodStrength</TableCell>
-            <TableCell>doseValRx</TableCell>
-            <TableCell>doseUnitRx</TableCell>
-            <TableCell>dosesPer24Hrs</TableCell>
-            <TableCell>route</TableCell>
+            <TableCell sx={{ fontSize: "0.9rem", fontWeight: "bold" }}>
+              Drug
+            </TableCell>
+            <TableCell sx={{ fontSize: "0.9rem", fontWeight: "bold" }}>
+              Strength
+            </TableCell>
+            <TableCell
+              align="center"
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              Dose
+            </TableCell>
+            <TableCell
+              align="center"
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              Unit
+            </TableCell>
+            <TableCell
+              align="center"
+              sx={{ fontSize: "0.9rem", fontWeight: "bold" }}
+            >
+              DosesPer24Hrs
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {prescriptions.map((prescription) => (
             <TableRow key={prescription.prescriptionId}>
-              <TableCell>{prescription.drug}</TableCell>
-              <TableCell>{prescription.prodStrength}</TableCell>
-              <TableCell>{prescription.doseValRx}</TableCell>
-              <TableCell>{prescription.doseUnitRx}</TableCell>
-              <TableCell>{prescription.dosesPer24Hrs}</TableCell>
-              <TableCell>{prescription.route}</TableCell>
+              <TableCell sx={{ fontSize: "0.9rem" }}>
+                {prescription.drug}
+              </TableCell>
+              <TableCell sx={{ fontSize: "0.9rem" }}>
+                {prescription.prodStrength}
+              </TableCell>
+              <TableCell align="center" sx={{ fontSize: "0.9rem" }}>
+                {prescription.doseValRx}
+              </TableCell>
+              <TableCell align="center" sx={{ fontSize: "0.9rem" }}>
+                {prescription.doseUnitRx}
+              </TableCell>
+              <TableCell align="center" sx={{ fontSize: "0.9rem" }}>
+                {prescription.dosesPer24Hrs}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
