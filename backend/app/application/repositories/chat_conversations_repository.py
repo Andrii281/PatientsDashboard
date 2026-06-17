@@ -28,12 +28,13 @@ class ChatConversationsRepository(IChatConversationsRepository):
 
             try:
                 session.commit()
+                session.refresh(new_conversation)
+                return self.mapper.to_entity(new_conversation)
             except IntegrityError:
                 session.rollback()
                 conversation = session.execute(
                     select(ChatConversationsModel)
                     .where(ChatConversationsModel.hadm_id == admission_id)
                 ).scalars().one()
-
-            return self.mapper.to_entity(conversation)
+                return self.mapper.to_entity(conversation)
         

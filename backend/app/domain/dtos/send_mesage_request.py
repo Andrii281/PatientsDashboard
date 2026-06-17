@@ -60,7 +60,7 @@ class SendMessageMetadataDTO(BaseDTO):
 class SendMesageRequestDTO(BaseDTO):
     conversation_id: str = Field(alias="conversationId")
 
-    text: str
+    text: str = Field(min_length=1)
 
     author: str
 
