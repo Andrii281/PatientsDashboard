@@ -2,7 +2,7 @@ import { type TSendMessageRequestDTO } from "@/shared/dtos/TSendMessageRequestDT
 import { type TSendMessageResponseDTO } from "@/shared/dtos/TSendMessageResponseDTO";
 import { type TConversations } from "@/shared/types/TConversations";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.VITE_API_URL ?? "";
 
 export const conversationsApi = {
   getByAdmissionId: async (admissionId: string): Promise<TConversations> =>
