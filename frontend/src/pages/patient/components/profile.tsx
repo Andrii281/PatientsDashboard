@@ -30,7 +30,7 @@ export const Profile = ({
       <ProfileDetails label="Last Name" value={lastName} />
       <ProfileDetails label="Gender" value={gender} />
       <ProfileDetails label="Age" value={age} />
-      <ProfileDetails label="Eace" value={race} />
+      <ProfileDetails label="Race" value={race} />
       <ProfileDetails label="Language" value={language} />
       <ProfileDetails label="Marital Status" value={maritalStatus} />
     </Stack>
